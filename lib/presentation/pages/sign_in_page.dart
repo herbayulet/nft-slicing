@@ -2,18 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nft_market/constants/color_constants.dart';
-import 'package:nft_market/presentation/pages/sign_in_page.dart';
+import 'package:nft_market/presentation/pages/sign_up_page.dart';
 import 'package:nft_market/presentation/widgets/button_widget.dart';
 import 'package:nft_market/presentation/widgets/input_widget.dart';
 import 'package:nft_market/presentation/widgets/page_widget.dart';
 
-class SignUpPage extends StatelessWidget {
-  const SignUpPage({super.key});
+class SignInPage extends StatelessWidget {
+  const SignInPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     final formKey = GlobalKey<FormState>();
-    final fullnameController = TextEditingController();
     final emailController = TextEditingController();
     final passwordController = TextEditingController();
     return PageWidget(
@@ -22,18 +21,17 @@ class SignUpPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            _body(formKey, fullnameController, emailController,
-                passwordController),
+            _body(formKey, emailController, passwordController),
             TextButton(
               onPressed: () {
                 Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
-                    builder: (context) => const SignInPage(),
+                    builder: (context) => const SignUpPage(),
                   ),
                 );
               },
               child: Text(
-                'Sign In to My Account',
+                'Create new account',
                 style: GoogleFonts.inter(
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
@@ -49,7 +47,6 @@ class SignUpPage extends StatelessWidget {
 
   SingleChildScrollView _body(
       GlobalKey<FormState> formKey,
-      TextEditingController fullnameController,
       TextEditingController emailController,
       TextEditingController passwordController) {
     return SingleChildScrollView(
@@ -74,10 +71,6 @@ class SignUpPage extends StatelessWidget {
                   child: Column(
                     children: [
                       InputWidget(
-                        label: "Fullname",
-                        controller: fullnameController,
-                      ),
-                      InputWidget(
                         label: "Email",
                         controller: emailController,
                       ),
@@ -88,7 +81,7 @@ class SignUpPage extends StatelessWidget {
                       ),
                       const Gap(10),
                       ButtonWidget(
-                        namaButton: "Continue",
+                        namaButton: "Sign In",
                         isFullWidth: true,
                         onPressed: () {
                           if (formKey.currentState?.validate() ?? false) {
