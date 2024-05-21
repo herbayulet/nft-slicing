@@ -40,8 +40,8 @@ class PageWidget extends StatelessWidget {
       ),
       child: BackdropFilter(
         filter: ImageFilter.blur(
-          sigmaX: 100,
-          sigmaY: 100,
+          sigmaX: 50,
+          sigmaY: 50,
         ),
         child: Container(),
       ),

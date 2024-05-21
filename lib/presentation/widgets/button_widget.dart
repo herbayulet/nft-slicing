@@ -5,14 +5,19 @@ import 'package:nft_market/constants/color_constants.dart';
 class ButtonWidget extends StatelessWidget {
   final String namaButton;
   final VoidCallback onPressed;
+  final bool isFullWidth;
   const ButtonWidget(
-      {super.key, required this.namaButton, required this.onPressed});
+      {super.key,
+      required this.namaButton,
+      required this.onPressed,
+      this.isFullWidth = false});
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: onPressed,
       style: TextButton.styleFrom(
+        minimumSize: isFullWidth ? const Size.fromHeight(51) : null,
         backgroundColor: ColorContants.primary,
         foregroundColor: Colors.white,
         padding: const EdgeInsets.symmetric(
